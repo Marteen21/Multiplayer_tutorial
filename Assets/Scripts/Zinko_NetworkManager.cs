@@ -4,8 +4,8 @@ using UnityEngine.Networking;
 
 public class Zinko_NetworkManager : NetworkManager {
     [SerializeField]
-    private GameObject[] Zinko_PrefabOptions;
-    private int Zinko_Selected = 0;
+    public GameObject[] Zinko_PrefabOptions;
+    public int Zinko_Selected = 0;
 
     public void NextPlayerPrefab(){
         if (Zinko_PrefabOptions.Length == 0) {
