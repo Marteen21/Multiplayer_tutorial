@@ -19,12 +19,12 @@ public class Player_SyncRotation : NetworkBehaviour {
     private float threshhold = 5;
 
     void Update() {
-        lerpRotations();
+        LerpRotations();
     }
     void FixedUpdate() {
         TrasmitRotations();
     }
-    void lerpRotations() {
+    void LerpRotations() {
         if (!isLocalPlayer) {
             playerTransform.rotation = Quaternion.Lerp(playerTransform.rotation, syncPlayerRotation, Time.deltaTime * lerpRate);
             camTransform.rotation = Quaternion.Lerp(camTransform.rotation, syncCamRotation, Time.deltaTime * lerpRate);
