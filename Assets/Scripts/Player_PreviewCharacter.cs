@@ -21,9 +21,13 @@ public class Player_PreviewCharacter : MonoBehaviour {
         if (Model != null) {
             GameObject.Destroy(Model);
         }
-        Model = (GameObject)Instantiate(myZinko_NetworkManager.playerPrefab, new Vector3(3, 0, 3), Quaternion.Euler(0,200,0));
+        Model = (GameObject)Instantiate(myZinko_NetworkManager.playerPrefab, new Vector3(3, 0, 3), Quaternion.Euler(0, 200, 0));
         Model.GetComponent<Player_NetworkSetup>().enabled = false;
         Model.GetComponent<Player_SyncPosition>().enabled = false;
         Model.GetComponent<Player_SyncRotation>().enabled = false;
+        Model.GetComponent<CharacterController>().enabled = false;
+        if (Model.GetComponent<UI_LatencyFPS>() != null) {
+            Model.GetComponent<UI_LatencyFPS>().enabled = false;
+        }
     }
 }

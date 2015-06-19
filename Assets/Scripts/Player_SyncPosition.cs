@@ -55,7 +55,7 @@ public class Player_SyncPosition : NetworkBehaviour {
     }
     void HistoricalLerping() {
         if (syncPosList.Count > 0) {
-            Debug.Log(syncPosList.Count.ToString());
+            Debug.Log(syncPosList.Count.ToString() + " Player Sync Position List count");
             myTransform.position = Vector3.Lerp(myTransform.position, syncPosList[0], Time.deltaTime * lerpRate);
             if (Vector3.Distance(myTransform.position, syncPosList[0]) < closeEnough) {
                 syncPosList.RemoveAt(0);
