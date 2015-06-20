@@ -22,6 +22,14 @@ public class Player_PreviewCharacter : MonoBehaviour {
             GameObject.Destroy(Model);
         }
         Model = (GameObject)Instantiate(myZinko_NetworkManager.playerPrefab, new Vector3(3, 0, 3), Quaternion.Euler(0, 200, 0));
+        MonoBehaviour[] scripts = Model.GetComponents<MonoBehaviour>();
+        foreach (MonoBehaviour script in scripts) {
+            if (script != this) {
+                Debug.Log(script.name + " disabled");
+                script.enabled = false;
+            }
+
+        }
         Model.GetComponent<Player_NetworkSetup>().enabled = false;
         Model.GetComponent<Player_SyncPosition>().enabled = false;
         Model.GetComponent<Player_SyncRotation>().enabled = false;
