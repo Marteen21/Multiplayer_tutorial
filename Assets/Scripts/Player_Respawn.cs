@@ -8,12 +8,14 @@ public class Player_Respawn : NetworkBehaviour {
     private Image crosshairImage;
     private GameObject respawnButton;
 	// Use this for initialization
-	void Start () {
+    public override void PreStartClient() {
         healthScript = GetComponent<Player_Health>();
         healthScript.EventRespawn += EnablePlayer;
+    }
+    public override void OnStartLocalPlayer() {
         crosshairImage = GameObject.Find("CrosshairImage").GetComponent<Image>();
         SetRespawnButton();
-	}
+    }
     void EnablePlayer() {
         GetComponent<CharacterController>().enabled = true;
         GetComponent<Player_Shoot>().enabled = true;
@@ -42,11 +44,7 @@ public class Player_Respawn : NetworkBehaviour {
     {
         healthScript.ResetHealth();
     }
-    void OnDisable() {
+    public override void OnNetworkDestroy() {
         healthScript.EventRespawn -= EnablePlayer;
     }
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }

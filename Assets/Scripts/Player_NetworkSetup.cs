@@ -8,16 +8,11 @@ public class Player_NetworkSetup : NetworkBehaviour {
     [SerializeField]
     AudioListener audioListener;
     // Use this for initialization
-    void Start() {
-
-        if (isLocalPlayer) {
-
-            GameObject.Find("SceneCamera").SetActive(false);
-            GetComponent<CharacterController>().enabled = true;
-            GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = true;
-            FPSCharacterCAM.enabled = true;
-            audioListener.enabled = true;
-
-        }
+    public override void OnStartLocalPlayer() {
+        GameObject.Find("SceneCamera").SetActive(false);
+        GetComponent<CharacterController>().enabled = true;
+        GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = true;
+        FPSCharacterCAM.enabled = true;
+        audioListener.enabled = true;
     }
 }

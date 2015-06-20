@@ -9,13 +9,14 @@ public class Player_Death : NetworkBehaviour {
     private Image crossHairImage;
     private GameObject respawnButton;
 
-
-	void Start () {
-        crossHairImage = GameObject.Find("CrosshairImage").GetComponent<Image>();
+    public override void PreStartClient() {
         healthScript = GetComponent<Player_Health>();
         healthScript.EventDie += DisablePlayer;
-	}
-    void OnDisable() {
+    }
+    public override void OnStartLocalPlayer() {
+        crossHairImage = GameObject.Find("CrosshairImage").GetComponent<Image>();
+    }
+    public override void OnNetworkDestroy() {
         healthScript.EventDie -= DisablePlayer;
     }
     void DisablePlayer() {

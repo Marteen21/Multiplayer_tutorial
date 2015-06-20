@@ -11,11 +11,11 @@ public class Player_ID : NetworkBehaviour {
     public override void OnStartLocalPlayer() {
 
         GetNetIdentity();
+        SetIdentity();
 
     }
 	void Awake () {
         myTransform = transform;
-        SetIdentity();
 	}
 	
 	// Update is called once per frame

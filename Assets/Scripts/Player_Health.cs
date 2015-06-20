@@ -16,10 +16,10 @@ public class Player_Health : NetworkBehaviour {
     public delegate void RespawnDelegete();
     public event RespawnDelegete EventRespawn;
 	// Use this for initialization
-	void Start () {
+    public override void OnStartLocalPlayer() {
         healthText = GameObject.Find("HpText").GetComponent<Text>();
         SetHealthText();
-	}
+    }
     void SetHealthText() {
         if (isLocalPlayer) {
             healthText.text = "Health: " + health.ToString();

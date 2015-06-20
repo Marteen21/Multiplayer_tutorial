@@ -11,12 +11,12 @@ public class UI_LatencyFPS : NetworkBehaviour {
     private Text latencyText;
     private Text fpsText;
 	// Use this for initialization
-	void Start () {
+    public override void OnStartLocalPlayer() {
         nClient = GameObject.Find("NetworkManager").GetComponent<Zinko_NetworkManager>().client;
         latencyText = GameObject.Find("LatencyText").GetComponent<Text>();
         fpsText = GameObject.Find("FPSText").GetComponent<Text>();
-	}
-	
+    }
+
 	// Update is called once per frame
 	void Update () {
         ShowLatency();
